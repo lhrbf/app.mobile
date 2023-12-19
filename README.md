@@ -9,12 +9,12 @@ Antes de começar certifique-se de ter um ambiente react native configurado.
 
 ## Instalação
 
-1. Clone este repositório:
+##1. Clone este repositório:
    ```bash
    git clone https://github.com/lhrbf/app.mobile
    cd app.mobile
 
-2. Dependências
+##2. Dependências
    #Api
    
   Vá para o terminal
@@ -42,6 +42,7 @@ Antes de começar certifique-se de ter um ambiente react native configurado.
   8. npx expo install react-native-maps
   9. npm install haversine
 
-3. Inicar aplicação
+##3. Inicar aplicação
    
-   Após a instalação das dependências anteriores, inicie o app no expo: npx expo start
+   Após a instalação das dependências anteriores, inicie o app no expo:
+   npx expo start
