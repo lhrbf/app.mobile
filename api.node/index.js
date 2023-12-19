@@ -10,11 +10,11 @@ app.use(cors());
 app.use(bodyParser.json());
 
 // Rota de validação de login
-app.post('/api/login', (req, res) => {
+app.post('/api/entrar', (req, res) => {
   const { email, senha } = req.body;
 
   // Simulação de validação (substitua por lógica real de validação)
-  if (email === 'user@email.com' && senha === 'senha123') {
+  if (email === 'aluno@email.com' && senha === 'admin') {
     res.status(200).json({ sucesso: true, mensagem: 'Login bem-sucedido' });
   } else {
     res.status(401).json({ sucesso: false, mensagem: 'Credenciais inválidas' });
@@ -23,5 +23,5 @@ app.post('/api/login', (req, res) => {
 
 // Inicie o servidor
 app.listen(port, () => {
-  console.log(`Servidor iniciado em http://localhost:${port}`);
+  console.log(`Servidor iniciado em http://192.168.0.2:${port}`);
 });

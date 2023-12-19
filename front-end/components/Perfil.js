@@ -8,13 +8,13 @@ function Perfil() {
   const navigation = useNavigation();
 
   const navigateToLogin = () => {
-    navigation.navigate('Login');
+    navigation.navigate('Entrar');
   };
 
   return (
     <TouchableOpacity style={styles.container} onPress={navigateToLogin}>
       <View>
-        <Icon style={styles.avatar} name="user" size={47} color="brown" />
+        <Icon style={styles.avatar} name="user" size={50} color="green" />
       </View>
     </TouchableOpacity>
   );
@@ -27,10 +27,10 @@ const styles = StyleSheet.create({
     left: 10,
   },
   avatar: {
-    backgroundColor: "#98FB98",
-    padding: 15,
-    borderRadius: 27,
-    paddingVertical: 8,
+    backgroundColor: "#D2B48C",
+    padding: 11,
+    paddingHorizontal: 16,
+    borderRadius: 500,
   }
 });
 

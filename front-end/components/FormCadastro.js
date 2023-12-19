@@ -34,7 +34,7 @@ function FormCadastro() {
   };
 
   const navegarParaOutraPagina = () => {
-    navigation.navigate('Login');
+    navigation.navigate('Entrar');
   };
 
   return (

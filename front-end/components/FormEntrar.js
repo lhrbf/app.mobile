@@ -7,8 +7,10 @@ function FormEntrar() {
   const [email, onChangeEmail] = useState('');
   const [password, onChangePassword] = useState('');
   const [mensagemErro, setMensagemErro] = useState('');
+  const [loading, setLoading] = useState(false); // Novo estado de loading
   const navigation = useNavigation();
-//Validação
+
+  // Validação
   const handleSubmit = async () => {
     try {
       if (!email || !password) {
@@ -16,8 +18,9 @@ function FormEntrar() {
         return;
       }
 
-      setLoading(true);
-      const resposta = await fetch('http://localhost:3000/api/login', {
+      setLoading(true); // Ativando o estado de loading
+
+      const resposta = await fetch('http://192.168.0.2:3000/api/entrar', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -35,13 +38,15 @@ function FormEntrar() {
     } catch (error) {
       console.error('Erro na solicitação:', error);
       setMensagemErro('Erro na conexão com o servidor. Tente novamente mais tarde.');
+    } finally {
+      setLoading(false); // Desativando o estado de loading, independentemente do resultado
     }
   };
 
   const navegarParaOutraPagina = () => {
     navigation.navigate('Cadastro');
   };
-  
+
   return (
     <View style={styles.container}>
       <TextInput
@@ -60,8 +65,11 @@ function FormEntrar() {
       <TouchableOpacity
         style={[styles.botao, { backgroundColor: 'green' }]}
         onPress={handleSubmit}
+        disabled={loading} // Desativar o botão enquanto estiver carregando
       >
-        <Text style={{ color: 'white', fontSize: 18 }}>Entrar</Text>
+        <Text style={{ color: 'white', fontSize: 18 }}>
+          {loading ? 'Carregando...' : 'Entrar'}
+        </Text>
       </TouchableOpacity>
       <View style={styles.divLinks}>
         <TouchableOpacity onPress={navegarParaOutraPagina}>

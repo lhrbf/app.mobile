@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { View, Text, Modal, Button, StyleSheet, Linking } from 'react-native';
+import { View, Text, Modal, Button, StyleSheet, Linking, TouchableOpacity } from 'react-native';
 import MapView, { Marker } from 'react-native-maps';
 import * as Location from 'expo-location';
 import dadosGeo from '../components/Dados';
@@ -19,8 +19,6 @@ const Areas = () => {
     requestLocation();
     setArea(dadosGeo.features);
   }, []);
-
-  console.log('Dados GeoJSON:', dadosGeo);
   
   const requestLocation = async () => {
     //permissão para pegar geolocalização do usuário
@@ -53,8 +51,8 @@ const Areas = () => {
       };
 
       const pointCoordinates = {
-        latitude: point.geometry.coordinates[0][0][1],
-        longitude: point.geometry.coordinates[0][0][0],
+        latitude: point.geometry.coordinates[0][0][0][1],
+        longitude: point.geometry.coordinates[0][0][0][0],
       };
 
       const distance = haversine(userCoordinates, pointCoordinates, { unit: 'km' });
@@ -89,15 +87,15 @@ const Areas = () => {
               longitude: location.longitude,
             }}
           >
-            <Icon name="walking" size={35} color="brown"/>
+            <Icon name="walking" size={35} color="green"/>
           </Marker>
         )}
         {area.map((feature, index) => (
           <Marker
             key={index}
             coordinate={{
-              latitude: feature.geometry.coordinates[0][0][1],
-              longitude: feature.geometry.coordinates[0][0][0],
+              latitude: feature.geometry.coordinates[0][0][0][1],
+              longitude: feature.geometry.coordinates[0][0][0][0],
             }}
             onPress={() => handleMarkerPress(feature)}
           />
@@ -114,13 +112,20 @@ const Areas = () => {
           <Text style={styles.text}>{selectedPoint && selectedPoint.properties.cdzona_nom}</Text>
           {distance && <Text style={styles.text}>Distância: {distance.toFixed(2)} km</Text>}
           <View style={styles.botaoContainer}>
-            <Button title="Fechar" onPress={() => setModalVisible(false)} />
             {selectedPoint && (
-              <Button
-                title="Abrir no Google Maps"
+              <TouchableOpacity
+                style={styles.botao}
                 onPress={() => openGoogleMaps(selectedPoint)}
-              />
+              >
+                <Text style={styles.botaoTexto}>Abrir no Google Maps</Text>
+              </TouchableOpacity>
             )}
+            <TouchableOpacity
+              style={styles.botao}
+              onPress={() => setModalVisible(false)}
+            >
+              <Text style={styles.botaoTexto}>Fechar</Text>
+            </TouchableOpacity>
           </View>
         </View>
       </Modal>
@@ -145,6 +150,17 @@ const styles = StyleSheet.create({
   botaoContainer: {
     marginTop: 20,
     gap: 10,
+  },
+  botao: {
+    backgroundColor: 'green',
+    padding: 10,
+    marginVertical: 5,
+    borderRadius: 5,
+  },
+  botaoTexto: {
+    color: 'white',
+    fontSize: 16,
+    textAlign: 'center',
   },
 });
 
