@@ -21,7 +21,7 @@ app.post('/api/entrar', (req, res) => {
   }
 });
 
-// Inicie o servidor
+// Inicia o servidor
 app.listen(port, () => {
   console.log(`Servidor iniciado em http://192.168.0.2:${port}`);
 });

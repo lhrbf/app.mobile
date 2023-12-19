@@ -28,7 +28,7 @@ const Areas = () => {
         setErrorMsg('Permission to access location was denied');
         return;
       }
-
+      
       let location = await Location.getCurrentPositionAsync({});
       setLocation(location.coords);
     } catch (error) {
