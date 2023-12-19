@@ -16,14 +16,22 @@ Antes de começar certifique-se de ter um ambiente react native configurado.
 
 2. Dependências
    #Api
+   
   Vá para o terminal
+  
   Navegue até a pasta node.api: cd node.api
+  
   Instale as dependências: npm install express body-parser cors
+
   Inicie o servidor: node index.js
+  
   #Front-end
+  
   Ainda no terminal
+  
   Navegue até a pasta front-end: cd front-end
-  Instale as dependências abaixo: 
+  
+  Instale as dependências abaixo:
   1. npm install
   2. npm install react react-dom
   3. npm install @react-navigation/native
@@ -35,4 +43,5 @@ Antes de começar certifique-se de ter um ambiente react native configurado.
   9. npm install haversine
 
 3. Inicar aplicação
+   
    Após a instalação das dependências anteriores, inicie o app no expo: npx expo start
