@@ -9,8 +9,8 @@ Antes de começar certifique-se de ter um ambiente react native configurado.
 
 ## Instalação
 
+```bash
 ##1. Clone este repositório:
-   ```bash
    git clone https://github.com/lhrbf/app.mobile
    cd app.mobile
 
